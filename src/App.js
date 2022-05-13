@@ -5,11 +5,6 @@ import { GifGrid } from './components/GifGrid';
 
 function App() {
   const [categories,setCategories]= useState([])
-  // const handleAdd = categorie=>{
-  //   setCategories([...categories,categorie])
-  // }
-
-  console.log(categories)
   return (
     <div className="App">
       <h2> GifExpertApp</h2>
@@ -18,7 +13,7 @@ function App() {
       <ul>
         {
           // categories.map((categorie,index)=> <li key={index} >{categorie}</li>)
-          categories.map((categorie,index)=> <GifGrid  
+          categories.map((categorie)=> <GifGrid  
           key ={categorie} 
           category={categorie}/>)
           }

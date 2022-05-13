@@ -1,27 +1,23 @@
-import React, { useState } from 'react'
-import PropTypes from 'prop-types';
+import { useForm } from '../hooks/useForm'
 export const AddCategory = ( {setCategories}) => {
-  const [inputValue, setInputValue] = useState('');
-  
-  const handleSubmit= e=>{
+  const [formValues,handleInputChange,reset]=useForm({
+    title:''
+  })
+  const{title}=formValues
+  const handleSubmit=e=>{
     e.preventDefault()
-    // console.log('submit hecho')
-    if(inputValue.trim().length>2){
-      setCategories(categorie=>[inputValue,...categorie, ])
-      setInputValue('')
+    setCategories(categorie=>[title,...categorie])
+    reset()
     }
-    else return console.log('llena con algo')
-  }
-  return (
+    return (
     <form onSubmit={handleSubmit}>
           <input 
             type='text' 
-            value={inputValue}
-            onChange={e=>setInputValue(e.target.value)}
+            value={title}
+            name='title'
+            onChange={handleInputChange}
             />
           </form>
         )
+
 }
-AddCategory.protoTypes={
-  setCategories: PropTypes.func.isRequired
-  }
